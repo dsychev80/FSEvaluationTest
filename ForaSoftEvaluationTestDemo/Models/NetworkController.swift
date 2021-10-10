@@ -51,7 +51,7 @@ class NetworkController {
                   let decoder = JSONDecoder()
                   decoder.dateDecodingStrategy = .iso8601
                   let jsonData = try decoder.decode(AlbumJSONResult.self, from: data)
-                  let albums = jsonData.results.sorted { $0.releaseDate < $1.releaseDate }
+                let albums = jsonData.results.sorted { $0.albumName < $1.albumName }
 
                   let allAlbums = albums
                     for album in albums {
