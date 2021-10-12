@@ -88,6 +88,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="ZAz-mW-0iQ">
+                                <rect key="frame" x="5" y="90" width="404" height="715"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,11 +108,19 @@
                     <tabBarItem key="tabBarItem" systemItem="search" id="Rq8-Lw-3d4"/>
                     <navigationItem key="navigationItem" id="pL3-Uz-6qZ"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZAz-mW-0iQ" id="7EJ-38-vbb"/>
                         <outlet property="albumCollectionView" destination="7te-hc-HNf" id="O3k-M7-1S0"/>
+                        <outlet property="errorMessageView" destination="gJH-de-PcW" id="Bis-G4-jYY"/>
                         <outlet property="searchBar" destination="3wB-EB-boi" id="OVE-am-WZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="gJH-de-PcW" customClass="MessageView" customModule="ForaSoftEvaluationTestDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="Oqo-H2-NdW"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="834.78260869565224" y="-260.49107142857144"/>
         </scene>

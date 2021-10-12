@@ -31,7 +31,12 @@ class NetworkController {
             }
             do {
                 let jsonData = try JSONDecoder().decode(SongsJSONResult.self, from: data)
+               
                 DispatchQueue.main.async {
+                    guard jsonData.results.count != 0 else {
+                        completion(.failure(.missingData))
+                        return
+                    }
                     completion(.success(jsonData.results))
                 }
             } catch {
@@ -45,14 +50,17 @@ class NetworkController {
         let _ = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
               guard error == nil, let data = data else {
                 completion(.failure(.serverError(error!.localizedDescription)))
-                  return
+                  return	
               }
               do {
                   let decoder = JSONDecoder()
                   decoder.dateDecodingStrategy = .iso8601
                   let jsonData = try decoder.decode(AlbumJSONResult.self, from: data)
+                guard jsonData.resultCount != 0 else {
+                    completion(.failure(.missingData))
+                    return
+                }
                 let albums = jsonData.results.sorted { $0.albumName < $1.albumName }
-
                   let allAlbums = albums
                     for album in albums {
                         self?.loadImageData(for: album) { (data) in
@@ -74,7 +82,7 @@ class NetworkController {
     
     private func loadImageData(for album: Album, with completion: @escaping (Data) -> Void) {
         guard let url = URL(string: album.albumImageLink) else { return }
-        let _ = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let _ = URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else { return }
             completion(data)
         }.resume()

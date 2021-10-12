@@ -19,6 +19,8 @@ class SearchViewController: UIViewController, AlbumDataUserProtocol {
     
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var errorMessageView: MessageView!
     
     var dataSource: AlbumsDataSource?
     
@@ -34,17 +36,31 @@ class SearchViewController: UIViewController, AlbumDataUserProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        albumCollectionView.dataSource = self
-        albumCollectionView.delegate = self
+        setupAlbumCollectionView()
         searchBar.delegate = self
     }
     
     func loadAlbums(for group: String) {
+        errorMessageView.isHidden = true
+        activityIndicator.startAnimating()
         dataSource?.loadAlbums(for: group) { [weak self] (result) in
             switch result {
-            case .failure(let error): print(error.localizedDescription)
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                    self?.errorMessageView.isHidden = false
+                    switch error {
+                    case .serverError(_):
+                        self?.errorMessageView.configure(with: "No data from server. Please try again.")
+                    case .missingData:
+                        self?.errorMessageView.configure(with: "No data from server for this request :(. Please try another one.")
+                    default:
+                        self?.errorMessageView.configure(with: "No data. Please check internet connection. Error: \(error.localizedDescription)")
+                    }
+                }
             case .success(let albums):
                 DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
                     self?.albums = albums
                     self?.albumCollectionView.reloadData()
                 }
@@ -52,11 +68,17 @@ class SearchViewController: UIViewController, AlbumDataUserProtocol {
         }
     }
     
+    private func setupAlbumCollectionView() {
+        albumCollectionView.backgroundView = errorMessageView
+        albumCollectionView.dataSource = self
+        albumCollectionView.delegate = self
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return albums?.count ?? 0
     }
     

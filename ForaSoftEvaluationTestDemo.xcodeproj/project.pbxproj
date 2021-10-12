@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84279B1C27155AF1004E51F2 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84279B1B27155AF1004E51F2 /* MessageView.xib */; };
+		84279B1F27155BC0004E51F2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84279B1E27155BC0004E51F2 /* MessageView.swift */; };
 		847AD27D270EE74A0022140D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD27C270EE74A0022140D /* AppDelegate.swift */; };
 		847AD27F270EE74A0022140D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD27E270EE74A0022140D /* SceneDelegate.swift */; };
 		847AD281270EE74A0022140D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD280270EE74A0022140D /* SearchViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84279B1B27155AF1004E51F2 /* MessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		84279B1E27155BC0004E51F2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		847AD279270EE74A0022140D /* ForaSoftEvaluationTestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForaSoftEvaluationTestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AD27C270EE74A0022140D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847AD27E270EE74A0022140D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				847AD291270F1F510022140D /* AlbumCollectionViewCell.swift */,
 				847AD2C5271394720022140D /* SongCell.swift */,
 				847AD2C8271394A10022140D /* SongCellView.xib */,
+				84279B1E27155BC0004E51F2 /* MessageView.swift */,
+				84279B1B27155AF1004E51F2 /* MessageView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +192,7 @@
 			files = (
 				847AD289270EE7560022140D /* LaunchScreen.storyboard in Resources */,
 				847AD286270EE7560022140D /* Assets.xcassets in Resources */,
+				84279B1C27155AF1004E51F2 /* MessageView.xib in Resources */,
 				847AD284270EE74A0022140D /* Main.storyboard in Resources */,
 				847AD2C9271394A10022140D /* SongCellView.xib in Resources */,
 			);
@@ -207,6 +214,7 @@
 				847AD2AB2711C7800022140D /* DataController.swift in Sources */,
 				847AD2B8271208D80022140D /* APIResourceService.swift in Sources */,
 				847AD29C27100F4E0022140D /* NetworkController.swift in Sources */,
+				84279B1F27155BC0004E51F2 /* MessageView.swift in Sources */,
 				847AD2A12710CDA70022140D /* HistoryViewController.swift in Sources */,
 				847AD2C6271394730022140D /* SongCell.swift in Sources */,
 				847AD292270F1F510022140D /* AlbumCollectionViewCell.swift in Sources */,

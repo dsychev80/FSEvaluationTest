@@ -17,6 +17,8 @@ extension Nameable {
     }
 }
 
+extension UIView: Nameable { }
+
 extension UIViewController: Nameable { }
 
 extension UIStoryboard {
@@ -44,5 +46,12 @@ extension Date {
         let dateFormaterr = DateFormatter()
         dateFormaterr.dateFormat = "dd.MM.YYYY"
         return dateFormaterr.string(from: self)
+    }
+}
+
+extension UIView {
+    func pinHorizontally(to margins: UILayoutGuide) {
+        self.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
     }
 }
